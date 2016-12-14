@@ -1,6 +1,6 @@
 # DOM
 
-Simple DOM traversal and access methods
+A light DOM traversal library
 
 # TODO
 
