@@ -1,15 +1,15 @@
-import DOM from './DOM'
+import { closest } from './Element'
 
 export default function onlyIf(selector, handler, options = {}){
   return e => {
     if(
       options.not &&
-      DOM(e.target).closest(options.not, e.currentTarget).size() > 0
+      closest(options.not, e.currentTarget, e.target)
     ){
       return
     }
 
-    const target = DOM(e.target).closest(selector, e.currentTarget).element()
+    const target = closest(selector, e.currentTarget, e.target)
     if(target){
       handler(e, target)
     }

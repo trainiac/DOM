@@ -12,3 +12,4 @@ A light DOM traversal library
 - Only use lodash functional functions that are needed
 - Look to optimize webpack build with UglifyJs, etc.
 - Create utilities library that removes utils.js
+- Release 1.0.0 update History.md
