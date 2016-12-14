@@ -1,6 +1,6 @@
 {
   "name": "@trainiac/dom",
-  "description": "Simple DOM traversal and access methods",
+  "description": "A light DOM traversal library",
   "version": "0.1.0",
   "homepage": "https://github.com/trainiac/dom",
   "author": {
@@ -16,7 +16,7 @@
   },
   "scripts": {
     "start": "node_modules/.bin/babel-node src/index.js",
-    "test": "node_modules/.bin/jest --config jest.config.json",
+    "test": "node_modules/.bin/jest --config jest.config",
     "test-cov": "node_modules/.bin/jest --config jest.coverage.config",
     "lint": "node_modules/.bin/eslint ./ --max-warnings 0",
     "lint-fix": "node_modules/.bin/eslint --fix ./",
