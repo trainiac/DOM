@@ -1,8 +1,8 @@
 import fp from 'lodash/fp'
 import * as Element from './Element'
 
-export const has = (elements, selection, scopeEl) => fp.filter(
-  Element.has(selection, scopeEl),
+export const has = (elements, selection) => fp.filter(
+  Element.has(selection),
   elements
 )
 
@@ -17,10 +17,16 @@ export const remove = (elements, selection) => fp.remove(
   elements
 )
 
-export const filter = (elements, selection) => fp.filter(
-  Element.matches(selection),
-  elements
-)
+export const filter = (elements, selection) => {
+  if(!selection){
+    return [...elements]
+  }
+
+  return fp.filter(
+    Element.matches(selection),
+    elements
+  )
+}
 
 export const siblings = (elements, selection) => fp.flow(
   fp.map(Element.siblings(selection)),
@@ -69,10 +75,10 @@ export const ancestors = (elements, selection, scopeEl) => fp.flow(
   fp.uniq
 )(elements)
 
-export const children = (elements, selection) => fp.map(
-  Element.children(selection),
-  elements
-)
+export const children = (elements, selection) => fp.flow(
+  fp.map(Element.children(selection)),
+  fp.flatten
+)(elements)
 
 export const is = (elements, selection) => fp.some(
   Element.matches(selection),

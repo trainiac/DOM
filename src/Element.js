@@ -29,8 +29,8 @@ export const children = fp.curry((selection, el) => {
   )(el)
 })
 
-const walkUntil = (func, scopeEl) => {
-  const elChildren = children(null, scopeEl)
+const walkUntil = (func, el) => {
+  const elChildren = children(null, el)
   for(const child of elChildren){
     if(func(child)){
       return child
@@ -45,14 +45,14 @@ const walkUntil = (func, scopeEl) => {
   return null
 }
 
-export const find = fp.curry((selection, scopeEl) => {
+export const find = fp.curry((selection, el) => {
   if(fp.isElement(selection)){
-    const el = walkUntil(fp.eq(selection), scopeEl)
-    return el ? [ el ] : []
+    const found = walkUntil(fp.eq(selection), el)
+    return found ? [ found ] : []
   }
 
   if(fp.isString(selection)){
-    return fp.toArray(scopeEl.querySelectorAll(selection))
+    return fp.toArray(el.querySelectorAll(selection))
   }
 
   return []
@@ -96,6 +96,10 @@ export const prevAll = el => {
 export const closest = fp.curry((selection, scopeEl, el) => {
   let parent = el
 
+  if(!selection){
+    return null
+  }
+
   while(parent){
     if(matches(selection, parent)){
       return parent
@@ -113,14 +117,14 @@ export const closest = fp.curry((selection, scopeEl, el) => {
 
 export const ancestors = fp.curry((selection, scopeEl, el) => {
   let parent = el.parentElement
-  const parents = []
+  const ancestors = []
   while(parent){
     if(selection){
       if(matches(selection, parent)){
-        parents.push(parent)
+        ancestors.push(parent)
       }
     }else{
-      parents.push(parent)
+      ancestors.push(parent)
     }
 
     if(scopeEl && matches(parent, scopeEl)){
@@ -130,13 +134,13 @@ export const ancestors = fp.curry((selection, scopeEl, el) => {
     parent = parent.parentElement
   }
 
-  return parents
+  return ancestors
 })
 
-export const has = fp.curry((selection, scopeEl, el) => {
+export const has = fp.curry((selection, el) => {
   if(fp.isElement(selection)){
     return fp.flow(
-      ancestors(el, scopeEl),
+      ancestors(el, el),
       fp.negate(fp.isEmpty)
     )(selection)
   }

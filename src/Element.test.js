@@ -32,6 +32,19 @@ describe('Element.matches', () => {
     expect(Element.matches('.container', div)).toBe(true)
     expect(Element.matches('div', div2)).toBe(true)
   })
+
+  it('should work in different browsers', () => {
+    const div = document.querySelector('.container')
+    div.webkitMatchesSelector = div.matches
+    div.matches = null
+    expect(Element.matches('.container', div)).toBe(true)
+    div.mozMatchesSelector = div.webkitMatchesSelector
+    div.webkitMatchesSelector = null
+    expect(Element.matches('.container', div)).toBe(true)
+    div.msMatchesSelector = div.mozMatchesSelector
+    div.mozMatchesSelector = null
+    expect(Element.matches('.container', div)).toBe(true)
+  })
 })
 
 describe('Element.children', () => {
@@ -400,20 +413,20 @@ describe('Element.has', () => {
 
   it('should return false if nothing is passed as a selection', () => {
     expect(
-      Element.has(null, null, document.querySelector('div'))
+      Element.has(null, document.querySelector('div'))
     ).toBe(false)
   })
 
   it('should return true if selector is within element child tree', () => {
     expect(
-      Element.has('a', null, document.querySelector('.container'))
+      Element.has('a', document.querySelector('.container'))
     ).toBe(true)
   })
 
   it('should return true if node is within element child tree', () => {
     const anchor = document.querySelector('a')
     expect(
-      Element.has(anchor, null, document.querySelector('.container'))
+      Element.has(anchor, document.querySelector('.container'))
     ).toBe(true)
   })
 })

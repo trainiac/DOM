@@ -58,4 +58,17 @@ describe('onlyIf', () => {
     scopedHandler(event)
     expect(handler).toHaveBeenCalledTimes(0)
   })
+
+  it('should not invoke the callback if selector is not matched', () => {
+    const handler = jest.fn()
+    const event = {
+      currentTarget: document.querySelector('.container'),
+      target: document.querySelector('button')
+    }
+
+    const scopedHandler = onlyIf('.foo', handler)
+
+    scopedHandler(event)
+    expect(handler).toHaveBeenCalledTimes(0)
+  })
 })
