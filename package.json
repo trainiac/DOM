@@ -1,18 +1,18 @@
 {
-  "name": "@trainiac/dom",
-  "description": "A light DOM traversal library",
+  "name": "@trainiac/pjQuery",
+  "description": "A light DOM traversal library for a post jQuery world",
   "version": "0.1.0",
-  "homepage": "https://github.com/trainiac/dom",
+  "homepage": "https://github.com/trainiac/pjQuery",
   "author": {
     "name": "Adrian William Adkiosn",
     "email": "adkison.adrian@gmail.com"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/tainiac/dom.git"
+    "url": "git://github.com/trainiac/pjQuery.git"
   },
   "bugs": {
-    "url": "https://github.com/trainiac/dom/issues"
+    "url": "https://github.com/trainiac/pjQuery/issues"
   },
   "scripts": {
     "prebuild": "rimraf dist lib",
