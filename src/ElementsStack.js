@@ -1,4 +1,8 @@
-import fp from 'lodash/fp'
+import isString from 'lodash/fp/isString'
+import isElement from 'lodash/fp/isElement'
+import nth from 'lodash/fp/nth'
+import indexOf from 'lodash/fp/indexOf'
+
 import * as Elements from './Elements'
 import * as Element from './Element'
 
@@ -6,18 +10,18 @@ export default class ElementsStack {
 
   constructor(selection){
     this.stack = []
-    if(fp.isElement(selection)){
+    if(isElement(selection)){
       this.stack.push([selection])
-    }else if(fp.isString(selection)){
+    }else if(isString(selection)){
       this.stack.push(Element.find(selection, document))
     }
   }
 
   element(index = 0){
-    return fp.nth(index, this.elements())
+    return nth(index, this.elements())
   }
   elements(){
-    return fp.nth(-1, this.stack) || []
+    return nth(-1, this.stack) || []
   }
 
   size(){
@@ -25,7 +29,7 @@ export default class ElementsStack {
   }
 
   index(el){
-    return fp.indexOf(el, this.elements())
+    return indexOf(el, this.elements())
   }
 
   is(selection){

@@ -1,8 +1,19 @@
-import fp from 'lodash/fp'
+import curry from 'lodash/fp/curry'
+import isString from 'lodash/fp/isString'
+import isElement from 'lodash/fp/isElement'
+import prop from 'lodash/fp/prop'
+import toArray from 'lodash/fp/toArray'
+import flow from 'lodash/fp/flow'
+import filter from 'lodash/fp/filter'
+import negate from 'lodash/fp/negate'
+import identity from 'lodash/fp/identity'
+import eq from 'lodash/fp/eq'
+import nth from 'lodash/fp/nth'
+import isEmpty from 'lodash/fp/isEmpty'
 
 const notEq = item => other => item !== other
 
-export const matches = fp.curry((selection, el) => {
+export const matches = curry((selection, el) => {
   const matchFunc = (
     el.matches ||
     el.webkitMatchesSelector ||
@@ -10,22 +21,22 @@ export const matches = fp.curry((selection, el) => {
     el.msMatchesSelector
   )
 
-  if(fp.isString(selection)){
+  if(isString(selection)){
     return matchFunc.call(el, selection)
   }
 
-  if(fp.isElement(selection)){
+  if(isElement(selection)){
     return selection === el
   }
 
   return false
 })
 
-export const children = fp.curry((selection, el) => {
-  return fp.flow(
-    fp.prop('children'),
-    fp.toArray,
-    fp.filter(selection ? matches(selection) : fp.identity)
+export const children = curry((selection, el) => {
+  return flow(
+    prop('children'),
+    toArray,
+    filter(selection ? matches(selection) : identity)
   )(el)
 })
 
@@ -45,22 +56,22 @@ const walkUntil = (func, el) => {
   return null
 }
 
-export const find = fp.curry((selection, el) => {
-  if(fp.isElement(selection)){
-    const found = walkUntil(fp.eq(selection), el)
+export const find = curry((selection, el) => {
+  if(isElement(selection)){
+    const found = walkUntil(eq(selection), el)
     return found ? [ found ] : []
   }
 
-  if(fp.isString(selection)){
-    return fp.toArray(el.querySelectorAll(selection))
+  if(isString(selection)){
+    return toArray(el.querySelectorAll(selection))
   }
 
   return []
 })
 
-export const siblings = fp.curry((selection, el) => {
+export const siblings = curry((selection, el) => {
   const siblings = children(selection, el.parentNode)
-  return fp.filter(notEq(el))(siblings)
+  return filter(notEq(el))(siblings)
 })
 
 export const next = el => {
@@ -69,7 +80,7 @@ export const next = el => {
   if(index >= siblings.length){
     return null
   }
-  return fp.nth(index, siblings)
+  return nth(index, siblings)
 }
 
 export const nextAll = el => {
@@ -84,7 +95,7 @@ export const prev = el => {
   if(index < 0){
     return null
   }
-  return fp.nth(index, siblings)
+  return nth(index, siblings)
 }
 
 export const prevAll = el => {
@@ -93,7 +104,7 @@ export const prevAll = el => {
   return siblings.slice(0, index)
 }
 
-export const closest = fp.curry((selection, scopeEl, el) => {
+export const closest = curry((selection, scopeEl, el) => {
   let parent = el
 
   if(!selection){
@@ -115,7 +126,7 @@ export const closest = fp.curry((selection, scopeEl, el) => {
   return null
 })
 
-export const ancestors = fp.curry((selection, scopeEl, el) => {
+export const ancestors = curry((selection, scopeEl, el) => {
   let parent = el.parentElement
   const ancestors = []
   while(parent){
@@ -137,18 +148,18 @@ export const ancestors = fp.curry((selection, scopeEl, el) => {
   return ancestors
 })
 
-export const has = fp.curry((selection, el) => {
-  if(fp.isElement(selection)){
-    return fp.flow(
+export const has = curry((selection, el) => {
+  if(isElement(selection)){
+    return flow(
       ancestors(el, el),
-      fp.negate(fp.isEmpty)
+      negate(isEmpty)
     )(selection)
   }
 
-  if(fp.isString(selection)){
-    return fp.flow(
+  if(isString(selection)){
+    return flow(
       find(selection),
-      fp.negate(fp.isEmpty)
+      negate(isEmpty)
     )(el)
   }
 
@@ -156,7 +167,7 @@ export const has = fp.curry((selection, el) => {
 })
 
 export const data = (el, key) => { // eslint-disable-line id-blacklist
-  const value = fp.prop(`dataset.${key}`, el)
+  const value = prop(`dataset.${key}`, el)
   return value !== undefined ? value : null
 }
 

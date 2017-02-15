@@ -1,18 +1,28 @@
-import fp from 'lodash/fp'
+import flatten from 'lodash/fp/flatten'
+import _filter from 'lodash/fp/filter'
+import uniq from 'lodash/fp/uniq'
+import map from 'lodash/fp/map'
+import compact from 'lodash/fp/compact'
+import flow from 'lodash/fp/flow'
+import _remove from 'lodash/fp/remove'
+import some from 'lodash/fp/some'
+import prop from 'lodash/fp/prop'
+import identity from 'lodash/fp/identity'
+
 import * as Element from './Element'
 
-export const has = (elements, selection) => fp.filter(
+export const has = (elements, selection) => _filter(
   Element.has(selection),
   elements
 )
 
-export const find = (elements, selection) => fp.flow(
-  fp.map(Element.find(selection)),
-  fp.flatten,
-  fp.uniq
+export const find = (elements, selection) => flow(
+  map(Element.find(selection)),
+  flatten,
+  uniq
 )(elements)
 
-export const remove = (elements, selection) => fp.remove(
+export const remove = (elements, selection) => _remove(
   Element.matches(selection),
   elements
 )
@@ -22,65 +32,65 @@ export const filter = (elements, selection) => {
     return [...elements]
   }
 
-  return fp.filter(
+  return _filter(
     Element.matches(selection),
     elements
   )
 }
 
-export const siblings = (elements, selection) => fp.flow(
-  fp.map(Element.siblings(selection)),
-  fp.flatten,
-  fp.uniq
+export const siblings = (elements, selection) => flow(
+  map(Element.siblings(selection)),
+  flatten,
+  uniq
 )(elements)
 
-export const next = fp.flow(
-  fp.map(Element.next),
-  fp.compact
+export const next = flow(
+  map(Element.next),
+  compact
 )
 
-export const nextAll = fp.flow(
-  fp.map(Element.nextAll),
-  fp.flatten,
-  fp.uniq
+export const nextAll = flow(
+  map(Element.nextAll),
+  flatten,
+  uniq
 )
 
-export const prev = fp.flow(
-  fp.map(Element.prev),
-  fp.compact
+export const prev = flow(
+  map(Element.prev),
+  compact
 )
 
-export const prevAll = fp.flow(
-  fp.map(Element.prevAll),
-  fp.flatten,
-  fp.uniq
+export const prevAll = flow(
+  map(Element.prevAll),
+  flatten,
+  uniq
 )
 
-export const closest = (elements, selection, scopeEl) => fp.flow(
-  fp.map(Element.closest(selection, scopeEl)),
-  fp.compact,
-  fp.uniq
+export const closest = (elements, selection, scopeEl) => flow(
+  map(Element.closest(selection, scopeEl)),
+  compact,
+  uniq
 )(elements)
 
-export const parents = (elements, selection) => fp.flow(
-  fp.map(fp.prop('parentElement')),
-  fp.compact,
-  fp.uniq,
-  fp.filter(selection ? Element.matches(selection) : fp.identity)
+export const parents = (elements, selection) => flow(
+  map(prop('parentElement')),
+  compact,
+  uniq,
+  filter(selection ? Element.matches(selection) : identity)
 )(elements)
 
-export const ancestors = (elements, selection, scopeEl) => fp.flow(
-  fp.map(Element.ancestors(selection, scopeEl)),
-  fp.flatten,
-  fp.uniq
+export const ancestors = (elements, selection, scopeEl) => flow(
+  map(Element.ancestors(selection, scopeEl)),
+  flatten,
+  uniq
 )(elements)
 
-export const children = (elements, selection) => fp.flow(
-  fp.map(Element.children(selection)),
-  fp.flatten
+export const children = (elements, selection) => flow(
+  map(Element.children(selection)),
+  flatten
 )(elements)
 
-export const is = (elements, selection) => fp.some(
+export const is = (elements, selection) => some(
   Element.matches(selection),
   elements
 )

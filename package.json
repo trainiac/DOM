@@ -18,9 +18,9 @@
     "prebuild": "rimraf dist lib",
     "build": "npm-run-all --parallel build:*",
     "build:main": "babel -d lib/ src",
-    "build:umd": "webpack --output-library-target umd --output-library aphrodite --output-filename aphrodite.umd.js --devtool source-map",
-    "build:umdmin": "webpack --output-library-target umd --output-library aphrodite --output-filename aphrodite.umd.min.js -p --devtool source-map",
-    "build:commonjs": "webpack --output-library-target commonjs2 --output-filename aphrodite.js",
+    "build:umd": "webpack --output-library-target umd --output-library pjQuery --output-filename pjQuery.umd.js --devtool source-map",
+    "build:umdmin": "webpack --output-library-target umd --output-library pjQuery --output-filename pjQuery.umd.min.js -p --devtool source-map",
+    "build:commonjs": "webpack --output-library-target commonjs2 --output-filename pjQuery.js",
     "test": "node_modules/.bin/jest --config jest.config",
     "test-cov": "node_modules/.bin/jest --config jest.coverage.config",
     "lint": "node_modules/.bin/eslint ./ --max-warnings 0 --fix"
