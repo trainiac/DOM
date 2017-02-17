@@ -1,6 +1,6 @@
-import { closest } from './Element'
+import closest from '../element/closest'
 
-export default function onlyIf(selector, handler, options = {}){
+export default function handleIf(selection, handler, options = {}){
   return e => {
     if(
       options.not &&
@@ -9,7 +9,7 @@ export default function onlyIf(selector, handler, options = {}){
       return
     }
 
-    const target = closest(selector, e.currentTarget, e.target)
+    const target = closest(selection, e.currentTarget, e.target)
     if(target){
       handler(e, target)
     }

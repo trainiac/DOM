@@ -1,14 +1,6 @@
-import DOM, { onlyIf } from './index'
+const handleIf = require('./handleIf').default
 
-describe('DOM', () => {
-  it('should accept a node', () => {
-    const div = document.createElement('div')
-    expect(DOM(div).element()).toBe(div)
-  })
-})
-
-
-describe('onlyIf', () => {
+describe('helpers.handleIf', () => {
   beforeAll(() => {
     document.body.innerHTML = `
       <div class="container">
@@ -27,7 +19,7 @@ describe('onlyIf', () => {
       target: document.querySelector('button')
     }
 
-    const scopedHandler = onlyIf('button', handler)
+    const scopedHandler = handleIf('button', handler)
 
     scopedHandler(event)
     expect(handler).toHaveBeenCalledWith(event, event.target)
@@ -40,7 +32,7 @@ describe('onlyIf', () => {
       target: document.querySelector('.deadZone')
     }
 
-    const scopedHandler = onlyIf('button', handler)
+    const scopedHandler = handleIf('button', handler)
 
     scopedHandler(event)
     expect(handler).toHaveBeenCalledWith(event, document.querySelector('button'))
@@ -53,7 +45,7 @@ describe('onlyIf', () => {
       target: document.querySelector('.deadZone')
     }
 
-    const scopedHandler = onlyIf('button', handler, { not: '.deadZone' })
+    const scopedHandler = handleIf('button', handler, { not: '.deadZone' })
 
     scopedHandler(event)
     expect(handler).toHaveBeenCalledTimes(0)
@@ -66,7 +58,7 @@ describe('onlyIf', () => {
       target: document.querySelector('button')
     }
 
-    const scopedHandler = onlyIf('.foo', handler)
+    const scopedHandler = handleIf('.foo', handler)
 
     scopedHandler(event)
     expect(handler).toHaveBeenCalledTimes(0)
