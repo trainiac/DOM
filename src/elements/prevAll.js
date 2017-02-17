@@ -1,8 +1,4 @@
-import flatten from 'lodash/fp/flatten'
-import uniq from 'lodash/fp/uniq'
-import map from 'lodash/fp/map'
-import flow from 'lodash/fp/flow'
-import curry from 'lodash/fp/curry'
+import { uniq, map, flow, curry, flatten } from 'lodash/fp'
 import prevAll from '../element/prevAll'
 
 export default curry(

@@ -1,5 +1,4 @@
-import some from 'lodash/fp/some'
-import curry from 'lodash/fp/curry'
+import { some, curry } from 'lodash/fp'
 import matches from '../element/matches'
 
 export default curry(

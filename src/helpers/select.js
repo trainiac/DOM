@@ -1,6 +1,4 @@
-import flow from 'lodash/fp/flow'
-import isString from 'lodash/fp/isString'
-import isElement from 'lodash/fp/isElement'
+import { isString, isElement, flow } from 'lodash/fp'
 import find from '../element/find'
 
 export default function (selection, scopeEl, ...funcs) {

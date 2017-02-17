@@ -1,4 +1,4 @@
-import curry from 'lodash/fp/curry'
+import { curry } from 'lodash/fp'
 import position from './position'
 
 export default curry((otherEl, el) => {

@@ -1,9 +1,4 @@
-import uniq from 'lodash/fp/uniq'
-import map from 'lodash/fp/map'
-import compact from 'lodash/fp/compact'
-import flow from 'lodash/fp/flow'
-import prop from 'lodash/fp/prop'
-import curry from 'lodash/fp/curry'
+import { map, compact, flow, prop, curry, uniq } from 'lodash/fp'
 import filter from './filter'
 
 export default curry(

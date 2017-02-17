@@ -1,6 +1,4 @@
-import curry from 'lodash/fp/curry'
-import nth from 'lodash/fp/nth'
-import findFrom from 'lodash/fp/findFrom'
+import { curry, findFrom } from 'lodash/fp'
 import children from './children'
 import matches from './matches'
 
@@ -15,5 +13,5 @@ export default curry((selection, el) => {
     return findFrom(element => matches(selection, element), index, siblings)
   }
 
-  return nth(index, siblings)
+  return siblings[index]
 })

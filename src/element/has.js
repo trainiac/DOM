@@ -1,9 +1,4 @@
-import curry from 'lodash/fp/curry'
-import isString from 'lodash/fp/isString'
-import isElement from 'lodash/fp/isElement'
-import flow from 'lodash/fp/flow'
-import negate from 'lodash/fp/negate'
-import isEmpty from 'lodash/fp/isEmpty'
+import { curry, isElement, isString, flow, negate, isEmpty } from 'lodash/fp'
 import ancestors from './ancestors'
 import find from './find'
 
