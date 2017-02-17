@@ -16,7 +16,7 @@
   },
   "scripts": {
     "prebuild": "rimraf lib",
-    "build": "npm run ling && node_modules/.bin/babel -d lib/ src && cp package.json lib",
+    "build": "npm run lint && node_modules/.bin/babel -d lib/ src && cp package.json lib",
     "test": "node_modules/.bin/jest --config jest.config",
     "test-cov": "node_modules/.bin/jest --config jest.coverage.config",
     "lint": "NODE_ENV=production node_modules/.bin/eslint ./",
