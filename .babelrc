@@ -1,7 +1,10 @@
 {
-  "presets": ["es2015"],
+  "presets": [
+    ["es2015", { "modules": false}]
+  ],
   "plugins": [
     "transform-object-rest-spread",
-    "transform-export-extensions"
+    "transform-export-extensions",
+    "lodash"
   ]
 }
