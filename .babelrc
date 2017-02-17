@@ -6,5 +6,8 @@
     "transform-object-rest-spread",
     "transform-export-extensions",
     "lodash"
+  ],
+  "ignore": [
+    "*.test.js"
   ]
 }

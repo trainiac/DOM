@@ -1,6 +1,6 @@
-const pjs = require('./index').default
+const pj = require('./index').default
 
-describe('pjs', () => {
+describe('pj', () => {
   it('should have all of the methods', () => {
     const methods = [
       'ancestors',
@@ -24,6 +24,6 @@ describe('pjs', () => {
       'select'
     ]
 
-    methods.forEach(method => expect(pjs[method]).toBeTruthy())
+    methods.forEach(method => expect(pj[method]).toBeTruthy())
   })
 })

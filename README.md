@@ -1,4 +1,4 @@
-# pjs
+# maceo
 
-Comfy functions for a post jQuery world
+Funktions for a post jQuery world
 

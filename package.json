@@ -1,18 +1,18 @@
 {
-  "name": "pjs",
-  "description": "Comfy functions for a post jQuery world",
+  "name": "maceo",
+  "description": "Funktions for a post jQuery world",
   "version": "0.1.0",
-  "homepage": "https://github.com/trainiac/pjs",
+  "homepage": "https://github.com/trainiac/maceo",
   "author": {
     "name": "Adrian William Adkison",
     "email": "adkison.adrian@gmail.com"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/trainiac/pjs.git"
+    "url": "git://github.com/trainiac/maceo.git"
   },
   "bugs": {
-    "url": "https://github.com/trainiac/pjs/issues"
+    "url": "https://github.com/trainiac/maceo/issues"
   },
   "scripts": {
     "prebuild": "rimraf dist lib",
