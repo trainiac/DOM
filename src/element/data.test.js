@@ -7,7 +7,13 @@ describe('element.data', () => {
 
   // jsdom currently doesn't support dataset hence the mock
   it('should retrieve data from data attibutes', () => {
-    expect(data('foo', { dataset: { foo: 'bar' } })).toBe('bar')
+    expect(data(
+      'foo', {
+        dataset: {
+          foo: 'bar'
+        }
+      }
+    )).toBe('bar')
   })
 
   it('should return null if data key doesnt exist', () => {

@@ -3,18 +3,18 @@ import isString from 'lodash/fp/isString'
 import isElement from 'lodash/fp/isElement'
 import find from '../element/find'
 
-export default function(selection, scopeEl, ...funcs){
+export default function (selection, scopeEl, ...funcs) {
   let elements
 
-  if(isString(selection)){
+  if (isString(selection)) {
     elements = find(selection, scopeEl)
-  }else if(isElement(selection)){
+  } else if (isElement(selection)) {
     elements = [selection]
-  }else{
+  } else {
     elements = []
   }
 
-  if(!funcs.length || !elements.length){
+  if (!funcs.length || !elements.length) {
     return elements
   }
 

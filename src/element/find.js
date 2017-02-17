@@ -5,16 +5,15 @@ import toArray from 'lodash/fp/toArray'
 import eq from 'lodash/fp/eq'
 import children from './children'
 
-
 const walkUntil = (func, el) => {
   const elChildren = children(null, el)
-  for(const child of elChildren){
-    if(func(child)){
+  for (const child of elChildren) {
+    if (func(child)) {
       return child
     }
 
     const found = walkUntil(func, child)
-    if(found){
+    if (found) {
       return found
     }
   }
@@ -23,12 +22,12 @@ const walkUntil = (func, el) => {
 }
 
 export default curry((selection, el) => {
-  if(isElement(selection)){
+  if (isElement(selection)) {
     const found = walkUntil(eq(selection), el)
-    return found ? [ found ] : []
+    return found ? [found] : []
   }
 
-  if(isString(selection)){
+  if (isString(selection)) {
     return toArray(el.querySelectorAll(selection))
   }
 

@@ -7,11 +7,11 @@ import matches from './matches'
 export default curry((selection, el) => {
   const siblings = children(null, el.parentNode)
   const index = siblings.indexOf(el) - 1
-  if(index < 0){
+  if (index < 0) {
     return null
   }
 
-  if(selection){
+  if (selection) {
     return findLastFrom(
       matches(selection),
       index,

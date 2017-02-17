@@ -4,16 +4,16 @@ import matches from './matches'
 export default curry((selection, scopeEl, el) => {
   let parent = el.parentElement
   const ancestors = []
-  while(parent){
-    if(selection){
-      if(matches(selection, parent)){
+  while (parent) {
+    if (selection) {
+      if (matches(selection, parent)) {
         ancestors.push(parent)
       }
-    }else{
+    } else {
       ancestors.push(parent)
     }
 
-    if(scopeEl && matches(parent, scopeEl)){
+    if (scopeEl && matches(parent, scopeEl)) {
       break
     }
 

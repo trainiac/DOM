@@ -1,5 +1,5 @@
-export default function dimensions(el){
-  if(!el){
+export default function dimensions (el) {
+  if (!el) {
     return null
   }
 

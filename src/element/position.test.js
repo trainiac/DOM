@@ -19,7 +19,7 @@ describe('element.position', () => {
       offsetRight: 3,
       scrollTop: 4,
       scrollLeft: 5,
-      getBoundingClientRect(){
+      getBoundingClientRect () {
         return {
           top: 7,
           left: 8

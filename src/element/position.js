@@ -1,5 +1,5 @@
-export default function position(el){
-  if(!el){
+export default function position (el) {
+  if (!el) {
     return null
   }
 

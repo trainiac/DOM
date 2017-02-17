@@ -9,7 +9,7 @@ describe('element.positionRelativeTo', () => {
     offsetRight: 3,
     scrollTop: 4,
     scrollLeft: 5,
-    getBoundingClientRect(){
+    getBoundingClientRect () {
       return {
         top: 7,
         left: 8
@@ -23,7 +23,7 @@ describe('element.positionRelativeTo', () => {
     offsetRight: 3,
     scrollTop: 4,
     scrollLeft: 5,
-    getBoundingClientRect(){
+    getBoundingClientRect () {
       return {
         top: 8,
         left: 9

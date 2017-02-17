@@ -10,11 +10,11 @@ export default curry((selection, el) => {
     el.msMatchesSelector
   )
 
-  if(isString(selection)){
+  if (isString(selection)) {
     return matchFunc.call(el, selection)
   }
 
-  if(isElement(selection)){
+  if (isElement(selection)) {
     return selection === el
   }
 

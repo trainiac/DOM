@@ -3,12 +3,12 @@ import position from './position'
 
 export default curry((otherEl, el) => {
   const myPosition = position(el)
-  if(!myPosition){
+  if (!myPosition) {
     return null
   }
 
   const otherPosition = position(otherEl)
-  if(!otherPosition){
+  if (!otherPosition) {
     return null
   }
 

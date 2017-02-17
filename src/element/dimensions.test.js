@@ -21,7 +21,7 @@ describe('element.dimensions', () => {
       scrollHeight: 4,
       offsetHeight: 5,
       offsetWidth: 6,
-      getBoundingClientRect(){
+      getBoundingClientRect () {
         return {
           height: 7,
           width: 8
