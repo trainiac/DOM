@@ -15,12 +15,6 @@
     "url": "https://github.com/trainiac/pjs/issues"
   },
   "scripts": {
-    "prebuild": "rimraf dist lib",
-    "build": "npm-run-all --parallel build:*",
-    "build:main": "babel -d lib/ src",
-    "build:umd": "webpack --output-library-target umd --output-library pjs --output-filename pjs.umd.js --devtool source-map",
-    "build:umdmin": "webpack --output-library-target umd --output-library pjs --output-filename pjs.umd.min.js -p --devtool source-map",
-    "build:commonjs": "webpack --output-library-target commonjs2 --output-filename pjs.js",
     "test": "node_modules/.bin/jest --config jest.config",
     "test-cov": "node_modules/.bin/jest --config jest.coverage.config",
     "lint": "node_modules/.bin/eslint ./ --max-warnings 0 --fix"
@@ -31,8 +25,8 @@
   "engines": {
     "node": "5.1.0"
   },
-  "dependencies": {
-    "lodash": "4.17.2"
+  "peerDependencies": {
+    "lodash": "^4.17.2"
   },
   "devDependencies": {
     "babel-cli": "6.16.0",
@@ -45,8 +39,6 @@
     "eslint": "3.12.1",
     "eslint-config-trainiac": "0.1.7",
     "jest": "17.0.3",
-    "npm-run-all": "^1.7.0",
-    "rimraf": "^2.5.2",
-    "webpack": "^1.12.2"
+    "lodash": "4.17.2"
   }
 }
