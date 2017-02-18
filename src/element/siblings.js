@@ -1,4 +1,4 @@
-import { curry, filter } from 'lodash/fp'
+import { curry, filter } from '../utils'
 import children from './children'
 
 export const notEq = item => other => item !== other

@@ -1,4 +1,4 @@
-import { uniq, map, flow, curry, flatten } from 'lodash/fp'
+import { uniq, map, flow, curry, flatten } from '../utils'
 import siblings from '../element/siblings'
 
 export default curry(

@@ -1,4 +1,4 @@
-import { curry, isString, isElement, toArray, eq } from 'lodash/fp'
+import { eq, curry, isString, toArray, isElement } from '../utils'
 import children from './children'
 
 const walkUntil = (func, el) => {

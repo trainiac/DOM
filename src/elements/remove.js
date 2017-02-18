@@ -1,4 +1,4 @@
-import { remove, curry } from 'lodash/fp'
+import { remove, curry } from '../utils'
 import matches from '../element/matches'
 
 export default curry(

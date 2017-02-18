@@ -1,4 +1,4 @@
-import { map, compact, flow, prop, curry, uniq } from 'lodash/fp'
+import { map, compact, flow, prop, curry, uniq } from '../utils'
 import filter from './filter'
 
 export default curry(

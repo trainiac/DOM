@@ -1,4 +1,4 @@
-import { curry, isElement, isString } from 'lodash/fp'
+import { curry, isElement, isString } from '../utils'
 
 export default curry((selection, el) => {
   const matchFunc = (

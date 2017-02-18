@@ -1,6 +1,9 @@
-import { curry, prop } from 'lodash/fp'
+import { curry } from '../utils'
 
 export default curry((key, el) => { // eslint-disable-line id-blacklist
-  const value = prop(`dataset.${key}`, el)
+  let value
+  if(el && el.dataset){
+    value = el.dataset[key]
+  }
   return value !== undefined ? value : null
 })

@@ -1,4 +1,4 @@
-import { curry, filter } from 'lodash/fp'
+import { curry, filter } from '../utils'
 import has from '../element/has'
 
 export default curry(

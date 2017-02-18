@@ -1,4 +1,4 @@
-import { map, flow, curry, flatten } from 'lodash/fp'
+import { map, flow, curry, flatten } from '../utils'
 import children from '../element/children'
 
 export default curry(

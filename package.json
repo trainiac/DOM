@@ -1,7 +1,7 @@
 {
   "name": "maceo",
   "description": "Funktions for a post jQuery world",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "homepage": "https://github.com/trainiac/maceo",
   "author": {
     "name": "Adrian William Adkison",
@@ -27,9 +27,6 @@
   "license": "MIT",
   "engines": {
     "node": "6.9.4"
-  },
-  "peerDependencies": {
-    "lodash": "^4.17.2"
   },
   "devDependencies": {
     "babel-cli": "6.16.0",

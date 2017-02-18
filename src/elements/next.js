@@ -1,4 +1,4 @@
-import { compact, flow, curry, map } from 'lodash/fp'
+import { compact, flow, curry, map } from '../utils'
 import next from '../element/next'
 
 export default curry(

@@ -1,4 +1,4 @@
-import { map, compact, flow, curry, uniq } from 'lodash/fp'
+import { uniq, map, compact, flow, curry} from '../utils'
 import closest from '../element/closest'
 
 export default curry(

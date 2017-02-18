@@ -1,4 +1,4 @@
-import { curry, findFrom } from 'lodash/fp'
+import { curry, findFrom } from '../utils'
 import children from './children'
 import matches from './matches'
 

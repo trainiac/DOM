@@ -1,4 +1,4 @@
-import { filter, curry } from 'lodash/fp'
+import { filter, curry } from '../utils'
 import matches from '../element/matches'
 
 export default curry((selection, elements) => {

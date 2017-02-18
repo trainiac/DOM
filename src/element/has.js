@@ -1,4 +1,4 @@
-import { curry, isElement, isString, flow, negate, isEmpty } from 'lodash/fp'
+import { curry, isString, flow, prop, isElement } from '../utils'
 import ancestors from './ancestors'
 import find from './find'
 
@@ -6,14 +6,16 @@ export default curry((selection, el) => {
   if (isElement(selection)) {
     return flow(
       ancestors(el, el),
-      negate(isEmpty)
+      prop('length'),
+      Boolean
     )(selection)
   }
 
   if (isString(selection)) {
     return flow(
       find(selection),
-      negate(isEmpty)
+      prop('length'),
+      Boolean
     )(el)
   }
 

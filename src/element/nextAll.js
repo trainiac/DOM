@@ -1,4 +1,4 @@
-import { curry } from 'lodash/fp'
+import { curry } from '../utils'
 import filter from '../elements/filter'
 import children from './children'
 
