@@ -2,25 +2,16 @@
 export const curry = func => {
   const length = func.length
 
-  const factory = (...initArgs) => {
-
-    const id = Date.now()
-
-    const collector = prevArgs => (...newArgs) => {
-
-      const totalArgs = [...prevArgs, ...newArgs]
-      if(totalArgs.length >= length) {
-        return func(...totalArgs)
-      }
-
-      return collector(totalArgs)
-
+  const collector = prevArgs => (...newArgs) => {
+    const totalArgs = [...prevArgs, ...newArgs]
+    if (totalArgs.length >= length) {
+      return func(...totalArgs)
     }
 
-    return collector([])(...initArgs)
+    return collector(totalArgs)
   }
 
-  return factory
+  return collector([])
 }
 
 export const flow = (...funcs) => input => {
@@ -33,9 +24,9 @@ export const eq = curry((val1, val2) => {
   return val1 === val2
 })
 
-export const negate = func => (...args) => !Boolean(func(...args))
+export const negate = func => (...args) => !func(...args)
 
-export const isString = val => typeof val == 'string'
+export const isString = val => typeof val === 'string'
 
 export const filter = curry((func, arr) => {
   return [...arr].filter(func)
@@ -74,9 +65,8 @@ export const prop = curry((name, obj) => {
   return obj[name]
 })
 
-
 export const flatten = array => {
-  if(!array || !array.length){
+  if (!array || !array.length) {
     return []
   }
 
@@ -93,7 +83,6 @@ export const flatten = array => {
       while (++index2 < valueLength) {
         result[offset + index2] = value[index2]
       }
-
     } else {
       result[result.length] = value
     }
@@ -108,31 +97,32 @@ export const findFrom = curry((func, index, arr) => {
   const length = arr.length
   while (++offset < length) {
     const item = arr[offset]
-    if(func(item)) {
+    if (func(item)) {
       return item
     }
   }
+  return undefined
 })
 
 export const findFromRight = curry((func, index, arr) => {
   let offset = index + 1
-  const length = arr.length
   while (--offset >= 0) {
     const item = arr[offset]
-    if(func(item)) {
+    if (func(item)) {
       return item
     }
   }
+  return undefined
 })
 
 export const uniq = arr => {
-  const result = [];
-  let i = -1
+  const result = []
+  let index = -1
   const length = arr.length
-  while(++i < length) {
-    if(result.indexOf(arr[i]) === -1) {
-      result.push(arr[i]);
+  while (++index < length) {
+    if (result.indexOf(arr[index]) === -1) {
+      result.push(arr[index])
     }
   }
-  return result;
+  return result
 }

@@ -1,4 +1,4 @@
-import { uniq, map, compact, flow, curry} from '../utils'
+import { uniq, map, compact, flow, curry } from '../utils'
 import closest from '../element/closest'
 
 export default curry(

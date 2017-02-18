@@ -12,7 +12,7 @@ export default curry((selection, el) => {
   if (selection) {
     return findFromRight(
       matches(selection),
-      index ,
+      index,
       siblings.slice(0, index + 1)
     )
   }
