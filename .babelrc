@@ -3,9 +3,7 @@
     ["es2015", { "modules": false}]
   ],
   "plugins": [
-    "transform-object-rest-spread",
-    "transform-export-extensions",
-    "lodash"
+    "transform-object-rest-spread"
   ],
   "ignore": [
     "*.test.js"
